@@ -13,7 +13,7 @@ public class RequestParamsInjected {
     static {
         CONTENT.put("param1", "Content 1");
         CONTENT.put(963, "Content 2");
-        CONTENT.put("1rp2", "Content for regexp");
+        CONTENT.put("regexpparam", "Content for regexp");
     }
 
     @RequestParameter
