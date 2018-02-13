@@ -16,14 +16,15 @@
 -->
 <!--Adapted by Oleksandr Tarasenko-->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+§<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.taradevko</groupId>
     <artifactId>com.taradevko.aem</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <description>Sling Request Parameter Injector</description>
-    
+
     <modules>
         <module>core</module>
         <module>ui.apps</module>
@@ -160,16 +161,10 @@
                             <goals>
                                 <goal>scr</goal>
                             </goals>
-                            <configuration>
-                                <!-- Private service properties for all services. -->
-                                <properties>
-                                    <service.vendor>Adobe</service.vendor>
-                                </properties>
-                            </configuration>
                         </execution>
                     </executions>
                     <configuration>
-                               <outputDirectory>${project.build.directory}/classes</outputDirectory>
+                        <outputDirectory>${project.build.directory}/classes</outputDirectory>
                     </configuration>
                     <dependencies>
                         <dependency>
@@ -236,7 +231,7 @@
                 <plugin>
                     <groupId>org.apache.felix</groupId>
                     <artifactId>maven-bundle-plugin</artifactId>
-                    <version>2.5.3</version>
+                    <version>3.2.0</version>
                     <inherited>true</inherited>
                 </plugin>
                 <!-- Maven Enforcer Plugin -->
@@ -275,7 +270,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore />
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
@@ -295,7 +290,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                         <ignore />
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
@@ -316,13 +311,13 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore />
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                             </pluginExecutions>
                         </lifecycleMappingMetadata>
                     </configuration>
-                </plugin>  
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
@@ -396,12 +391,6 @@
                 <scope>provided</scope>
             </dependency>
             <dependency>
-		<groupId>biz.aQute</groupId>
-		<artifactId>bndlib</artifactId>
-		<version>1.50.0</version>
-		<scope>provided</scope>
-            </dependency>
-            <dependency>
                 <groupId>org.osgi</groupId>
                 <artifactId>org.osgi.core</artifactId>
                 <version>4.2.0</version>
@@ -413,6 +402,21 @@
                 <version>4.2.0</version>
                 <scope>provided</scope>
             </dependency>
+            <dependency>
+                <groupId>org.osgi</groupId>
+                <artifactId>org.osgi.service.component.annotations</artifactId>
+                <version>1.3.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.osgi</groupId>
+                <artifactId>org.osgi.annotation</artifactId>
+                <version>6.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.osgi</groupId>
+                <artifactId>org.osgi.service.metatype.annotations</artifactId>
+                <version>1.3.0</version>
+            </dependency>
             <!-- Logging Dependencies -->
             <dependency>
                 <groupId>org.slf4j</groupId>
@@ -421,11 +425,11 @@
                 <scope>provided</scope>
             </dependency>
             <!-- Apache Sling Dependencies -->
-            
+
             <dependency>
                 <groupId>org.apache.sling</groupId>
                 <artifactId>org.apache.sling.models.api</artifactId>
-                <version>1.1.0</version>
+                <version>1.2.2</version>
                 <scope>provided</scope>
             </dependency>
             <dependency>

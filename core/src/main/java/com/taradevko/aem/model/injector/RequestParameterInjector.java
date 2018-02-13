@@ -1,26 +1,24 @@
 package com.taradevko.aem.model.injector;
 
-import com.taradevko.aem.model.injector.annotation.RequestParameter;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.felix.scr.annotations.Component;
-import org.apache.felix.scr.annotations.Property;
-import org.apache.felix.scr.annotations.Service;
-import org.apache.sling.models.spi.DisposalCallbackRegistry;
-import org.apache.sling.models.spi.Injector;
-import org.apache.sling.models.spi.injectorspecific.AbstractInjectAnnotationProcessor;
-import org.apache.sling.models.spi.injectorspecific.InjectAnnotationProcessor;
-import org.apache.sling.models.spi.injectorspecific.InjectAnnotationProcessorFactory;
-import org.osgi.framework.Constants;
-
-import javax.servlet.ServletRequest;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Type;
 import java.util.Enumeration;
 
-@Component
-@Service
-@Property(name = Constants.SERVICE_RANKING, intValue = Integer.MIN_VALUE)
-public class RequestParameterInjector implements Injector, InjectAnnotationProcessorFactory {
+import javax.servlet.ServletRequest;
+
+import org.apache.commons.lang3.StringUtils;
+import org.apache.sling.models.spi.DisposalCallbackRegistry;
+import org.apache.sling.models.spi.Injector;
+import org.apache.sling.models.spi.injectorspecific.AbstractInjectAnnotationProcessor2;
+import org.apache.sling.models.spi.injectorspecific.InjectAnnotationProcessor2;
+import org.apache.sling.models.spi.injectorspecific.StaticInjectAnnotationProcessorFactory;
+import org.osgi.framework.Constants;
+import org.osgi.service.component.annotations.Component;
+
+import com.taradevko.aem.model.injector.annotation.RequestParameter;
+
+@Component(property = {Constants.SERVICE_RANKING + "=" + Integer.MIN_VALUE})
+public class RequestParameterInjector implements Injector, StaticInjectAnnotationProcessorFactory {
 
     @Override
     public String getName() {
@@ -84,7 +82,7 @@ public class RequestParameterInjector implements Injector, InjectAnnotationProce
     }
 
     @Override
-    public InjectAnnotationProcessor createAnnotationProcessor(final Object adaptable, final AnnotatedElement element) {
+    public InjectAnnotationProcessor2 createAnnotationProcessor(final AnnotatedElement element) {
 
         // check if the element has the expected annotation
         RequestParameter annotation = element.getAnnotation(RequestParameter.class);
@@ -94,7 +92,7 @@ public class RequestParameterInjector implements Injector, InjectAnnotationProce
         return null;
     }
 
-    private static class RequestParameterAnnotationProcessor extends AbstractInjectAnnotationProcessor {
+    private static class RequestParameterAnnotationProcessor extends AbstractInjectAnnotationProcessor2 {
 
         private final RequestParameter annotation;
 
